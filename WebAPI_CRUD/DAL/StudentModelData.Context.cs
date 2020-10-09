@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebAPI_CRUD
+namespace WebAPI_CRUD.DAL
 {
     using System;
     using System.Data.Entity;

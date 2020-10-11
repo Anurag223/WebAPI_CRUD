@@ -9,8 +9,8 @@ namespace WebAPI_CRUD.DAL.Service
 {
     public interface IStudent :IDisposable
     {
-        Student GetStudentDetails();
+        List<StudentViewModel> GetStudentDetails();
 
-        void AddStudentDetails(StudentViewModel student);
+        //void AddStudentDetails(StudentViewModel student);
     }
 }

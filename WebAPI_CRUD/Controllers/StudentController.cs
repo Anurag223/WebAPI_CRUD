@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Web.Http;
 using WebAPI_CRUD.DAL;
+using WebAPI_CRUD.DAL.Implementation;
 using WebAPI_CRUD.ViewModel;
 
 namespace WebAPI_CRUD.Controllers
@@ -14,22 +15,26 @@ namespace WebAPI_CRUD.Controllers
     {
         //GET - Retrieve details of all students
         private readonly WebAPI_DemoEntities _DemoEntities;
+        private readonly StudentService _studentService;
         public StudentController()
         {
             _DemoEntities = new WebAPI_DemoEntities();
+            _studentService = new StudentService();
         }
         [HttpGet]
         [ActionName("GetStudentDetails")]
         public IHttpActionResult GetStudentDetails()
         {
-            IList<StudentViewModel> studentmodel = null;
-            studentmodel = _DemoEntities.Students.Select(x => new StudentViewModel()
-            {
-                ID = x.Id,
-                Name = x.Name,
-                City = x.City,
-                Email = x.Email
-            }).ToList<StudentViewModel>();
+            //IList<StudentViewModel> studentmodel = null;
+            //studentmodel = _DemoEntities.Students.Select(x => new StudentViewModel()
+            //{
+            //    ID = x.Id,
+            //    Name = x.Name,
+            //    City = x.City,
+            //    Email = x.Email
+            //}).ToList<StudentViewModel>();
+
+            var studentmodel = _studentService.GetStudentDetails();
 
             if (studentmodel.Count <= 0)
                 return NotFound();
